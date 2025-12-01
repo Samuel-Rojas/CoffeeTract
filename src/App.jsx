@@ -1,16 +1,5 @@
 import { useState } from "react";
 import { coffeeDrinks, findBestMatch, filterDrinks } from "./coffeeDrinks";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -62,8 +51,6 @@ function App() {
 
   const recommendation = findBestMatch(userAnswer);
 
-  
-
   return (
     <>
       <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -86,9 +73,17 @@ function App() {
               </div>
             </div>
           ) : (
-            <div>
-              <h2>{recommendation.name}</h2>
-              <p>{recommendation.description}</p>
+            <div className="h-[500px] w-[550px] m-auto perspective-[1000px] cursor-pointer group">
+              <div className="w-full h-full transition-transform duration-600 transform-3d group-hover:transform-[rotateY(180deg)]">
+                <div className="absolute w-full h-full backface-hidden flex items-center justify-center rounded-lg bg-white border border-gray-200">
+                  <h1>{recommendation.name}</h1>
+                  <br />
+                  <p>{recommendation.description}</p>
+                </div>
+                <div className="absolute w-full h-full backface-hidden flex items-center justify-center rounded-lg bg-purple-600 text-white [transform:rotateY(180deg)]">
+                  back - dumby data
+                </div>
+              </div>
             </div>
           )}
         </div>
